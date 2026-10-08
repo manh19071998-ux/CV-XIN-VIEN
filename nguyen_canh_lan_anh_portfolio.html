@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Nguyễn Cảnh Lan Anh, Digital Journalism student at PTIT.">
+  <title>Nguyễn Cảnh Lan Anh | Digital Journalism & Marketing Portfolio</title>
+  <style>
+    :root{
+      --navy:#14213d;
+      --blue:#2563eb;
+      --ink:#172033;
+      --muted:#667085;
+      --line:#e6e9ef;
+      --soft:#f6f8fb;
+      --white:#ffffff;
+      --radius:18px;
+      --shadow:0 12px 35px rgba(20,33,61,.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink); background:var(--white); line-height:1.7;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1120px,92%);margin:auto}
+    header{
+      position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+    }
+    nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:800;color:var(--navy);letter-spacing:-.02em}
+    .brand span{color:var(--blue)}
+    .nav-links{display:flex;gap:24px;list-style:none;font-size:14px;color:#475467}
+    .nav-links a:hover{color:var(--blue)}
+    .menu{display:none;background:none;border:0;font-size:25px;color:var(--navy)}
+    section{padding:92px 0;scroll-margin-top:72px}
+    .hero{padding:105px 0 90px;background:linear-gradient(180deg,#f8fafc 0%,#fff 100%)}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:center}
+    .eyebrow{color:var(--blue);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px}
+    h1{font-size:clamp(42px,6vw,72px);line-height:1.04;letter-spacing:-.055em;color:var(--navy);margin-bottom:22px}
+    .hero h2{font-size:clamp(20px,2.5vw,30px);font-weight:600;color:#344054;margin-bottom:22px}
+    .hero p{font-size:18px;color:var(--muted);max-width:720px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:10px;border:1px solid var(--navy);font-weight:700;font-size:14px}
+    .btn.primary{background:var(--navy);color:#fff}
+    .btn.secondary{background:#fff;color:var(--navy)}
+    .portrait{
+      width:min(310px,100%);aspect-ratio:1/1;border-radius:28px;background:var(--soft);
+      border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+      margin-left:auto;box-shadow:var(--shadow);text-align:center;padding:30px;color:var(--muted)
+    }
+    .portrait strong{display:block;color:var(--navy);font-size:19px;margin-bottom:7px}
+    .section-head{margin-bottom:42px}
+    .section-head h2{font-size:38px;letter-spacing:-.035em;color:var(--navy);margin-bottom:8px}
+    .section-head p{color:var(--muted);max-width:700px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px}
+    .about-copy p+p{margin-top:18px}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .fact{padding:20px;background:var(--soft);border-radius:14px;border:1px solid var(--line)}
+    .fact small{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .fact strong{color:var(--navy)}
+    .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 8px 25px rgba(20,33,61,.04)}
+    .card h3{color:var(--navy);margin-bottom:12px;font-size:19px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;color:#475467}
+    .timeline{position:relative;margin-top:30px}
+    .timeline:before{content:"";position:absolute;left:10px;top:5px;bottom:5px;width:2px;background:#dbe3ef}
+    .timeline-item{position:relative;padding-left:45px;margin-bottom:38px}
+    .dot{position:absolute;left:3px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--blue);border:4px solid #eaf0ff}
+    .date{font-size:13px;color:var(--blue);font-weight:800;margin-bottom:5px}
+    .timeline h3{font-size:22px;color:var(--navy)}
+    .role{font-weight:600;color:#475467;margin-bottom:8px}
+    .timeline ul{padding-left:19px;color:var(--muted)}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .project-card{position:relative;overflow:hidden}
+    .project-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--blue)}
+    .project-meta{font-size:12px;color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .project-card h3{font-size:24px;margin:8px 0 4px}
+    .result{margin-top:16px;padding:13px 15px;background:var(--soft);border-radius:10px;font-size:14px;color:#344054}
+    .education{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grades{display:grid;gap:10px;margin-top:18px}
+    .grade{display:flex;justify-content:space-between;gap:20px;padding-bottom:9px;border-bottom:1px solid var(--line);font-size:14px}
+    .grade span:last-child{font-weight:800;color:var(--navy)}
+    .award-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .placeholder{border:1px dashed #cbd5e1;background:#fbfcfe;color:var(--muted)}
+    .contact{background:var(--navy);color:#fff}
+    .contact .section-head h2,.contact .section-head p{color:#fff}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+    .contact-list{display:grid;gap:14px}
+    .contact-item{padding:18px;border:1px solid rgba(255,255,255,.15);border-radius:14px}
+    .contact-item small{display:block;color:#aeb9ce;text-transform:uppercase;font-size:11px;letter-spacing:.08em}
+    .contact-item strong{font-size:16px}
+    form{display:grid;gap:14px}
+    input,textarea{width:100%;padding:14px 15px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font:inherit}
+    textarea{min-height:140px;resize:vertical}
+    input::placeholder,textarea::placeholder{color:#b7c0d0}
+    form .btn{background:#fff;color:var(--navy);border-color:#fff;cursor:pointer}
+    footer{padding:28px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+    .note{font-size:13px;color:var(--muted);font-style:italic}
+    @media(max-width:850px){
+      .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;padding:18px 4%;border-bottom:1px solid var(--line);flex-direction:column;gap:13px}
+      .nav-links.open{display:flex}.menu{display:block}
+      .hero-grid,.about-grid,.contact-grid,.education{grid-template-columns:1fr}
+      .portrait{margin:auto}
+      .skill-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      section{padding:70px 0}.hero{padding:75px 0}
+      .project-grid,.award-grid,.facts{grid-template-columns:1fr}
+      .section-head h2{font-size:31px}
+      h1{font-size:48px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#home">Lan<span>Anh</span>.</a>
+      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Digital Journalism · PTIT</div>
+        <h1>Nguyễn Cảnh Lan Anh</h1>
+        <h2>Digital Journalism Student | PR &amp; Marketing Aspirant</h2>
+        <p>I am a Digital Journalism student at the Posts and Telecommunications Institute of Technology (PTIT), with practical experience in livestream commerce, social media content, visual production, search quality evaluation, fanpage operations, event communication, and basic performance tracking.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="portrait">
+        <div>
+          <strong>Portrait</strong>
+          <span>Professional profile photo<br>— Cần bổ sung —</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>A concise academic and professional profile based exclusively on the current CV.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I am Nguyễn Cảnh Lan Anh, a Digital Journalism student at the Posts and Telecommunications Institute of Technology (PTIT), currently pursuing a Bachelor's Degree in Digital Journalism from 2023 to 2027.</p>
+          <p>I have practical experience across digital content, marketing communication, visual production, livestream commerce, event communication, community engagement, and search quality evaluation.</p>
+          <p>I am aspiring to develop my career in PR and Marketing, particularly in creating consumer-centric digital content, supporting brand communications, and improving measurable audience engagement.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><small>Education</small><strong>Bachelor’s Degree in Digital Journalism</strong></div>
+          <div class="fact"><small>Institution</small><strong>PTIT</strong></div>
+          <div class="fact"><small>Study Period</small><strong>2023–2027</strong></div>
+          <div class="fact"><small>GPA</small><strong>3.47 / 4.00</strong></div>
+          <div class="fact"><small>Location</small><strong>Ha Dong, Hanoi, Vietnam</strong></div>
+          <div class="fact"><small>English</small><strong>Professional Working Proficiency</strong></div>
+        </div>
+      </div>
+
+      <div class="skill-grid">
+        <div class="card">
+          <h3>Marketing &amp; Communications</h3>
+          <div class="tags">
+            <span class="tag">Social Media Content</span><span class="tag">Basic Content Writing</span>
+            <span class="tag">Livestream Commerce</span><span class="tag">Event Communication</span>
+            <span class="tag">Visual Storytelling</span><span class="tag">Community Engagement</span>
+            <span class="tag">Basic PR Writing</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Analytics &amp; Tools</h3>
+          <div class="tags">
+            <span class="tag">CTR Tracking</span><span class="tag">Click Analysis</span>
+            <span class="tag">Engagement Monitoring</span><span class="tag">Canva</span>
+            <span class="tag">CapCut</span><span class="tag">Adobe Photoshop</span>
+            <span class="tag">Adobe Illustrator</span><span class="tag">Adobe Premiere Pro</span>
+            <span class="tag">Adobe After Effects</span><span class="tag">TikTok Shop Seller Center</span>
+            <span class="tag">Google Sheets/Excel</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p><strong>Vietnamese</strong> — Native</p>
+          <p><strong>English</strong> — Professional Working Proficiency</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" style="background:var(--soft)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Research</h2>
+        <p>Academic research information is not listed in the current CV.</p>
+      </div>
+      <div class="card placeholder">
+        <h3>Research Interests &amp; Activities</h3>
+        <p>Research interests and academic research activities: <strong>Cần bổ sung.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="container">
+      <div class="section-head">
+        <h2>Teaching</h2>
+        <p>Teaching experience is not listed in the current CV.</p>
+      </div>
+      <div class="card placeholder">
+        <h3>Teaching Experience</h3>
+        <p>Teaching experience: <strong>Cần bổ sung.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" style="background:var(--soft)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projects &amp; Experience</h2>
+        <p>Selected practical experiences in digital content, marketing communication, visual production and search quality evaluation.</p>
+      </div>
+      <div class="project-grid">
+        <article class="card project-card">
+          <div class="project-meta">LESAC · Jun 2025 – Present</div>
+          <h3>Livestream Commerce</h3>
+          <p>Supported livestream operations including camera setup, lighting, product display, live-session coordination, script preparation and product talking points for handbag products.</p>
+          <div class="result"><strong>Results:</strong> Peak sales of VND 30 million within 4 hours; monthly GMV exceeded VND 200 million.</div>
+          <div class="tags" style="margin-top:16px"><span class="tag">Livestream Commerce</span><span class="tag">Content Support</span><span class="tag">CTR Tracking</span></div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-meta">So Media Club · Aug 2025 – Aug 2026</div>
+          <h3>Social Media &amp; Visual Communication</h3>
+          <p>Led visual design execution for seven club projects, supporting social media content, event communication and internal branding activities.</p>
+          <div class="result"><strong>Results:</strong> Communication assets generated approximately 70–150 reactions per post; supported events with 50+ participants.</div>
+          <div class="tags" style="margin-top:16px"><span class="tag">Visual Communication</span><span class="tag">Social Media</span><span class="tag">Event Communication</span></div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-meta">Paris Academy · Mar 2026 – May 2026</div>
+          <h3>Marketing Communication</h3>
+          <p>Planned and published social media content, designed visuals, supported event communication, and managed two media-focused community groups.</p>
+          <div class="result"><strong>Results:</strong> Approximately 50–100 reactions per post; two community groups with a combined 700 participants within one month.</div>
+          <div class="tags" style="margin-top:16px"><span class="tag">Social Media</span><span class="tag">Visual Content</span><span class="tag">Community Engagement</span></div>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-meta">Project Yukon · Appen · Jan 2021 – Jun 2021</div>
+          <h3>Search Quality Evaluation</h3>
+          <p>Evaluated landing page credibility, quality and relevance, while assessing Needs Met ratings to determine how well search results satisfied user intent.</p>
+          <div class="result"><strong>Results:</strong> 1,000+ landing page evaluations and 2,500+ Needs Met tasks; 100% accuracy in one monthly test cycle for the Canada locale.</div>
+          <div class="tags" style="margin-top:16px"><span class="tag">Search Quality</span><span class="tag">User Intent</span><span class="tag">Content Evaluation</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-head">
+        <h2>Education</h2>
+        <p>Academic background and selected relevant coursework.</p>
+      </div>
+      <div class="education">
+        <div class="card">
+          <div class="project-meta">2023 – 2027</div>
+          <h3>Posts and Telecommunications Institute of Technology</h3>
+          <p><strong>Bachelor’s Degree in Digital Journalism</strong></p>
+          <p style="margin-top:10px;color:var(--muted)">GPA: 3.47/4.00</p>
+        </div>
+        <div class="card">
+          <h3>Relevant Coursework</h3>
+          <div class="grades">
+            <div class="grade"><span>Media Psychology</span><span>9.5/10</span></div>
+            <div class="grade"><span>Typography &amp; Distribution Platform Principles</span><span>9.5/10</span></div>
+            <div class="grade"><span>Design &amp; Creativity in Journalism</span><span>8.9/10</span></div>
+            <div class="grade"><span>Journalistic Language &amp; Creative Content Production</span><span>8.8/10</span></div>
+            <div class="grade"><span>Media Economics</span><span>8.6/10</span></div>
+            <div class="grade"><span>Journalism &amp; Social Media</span><span>8.1/10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" style="background:var(--soft)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Publications</h2>
+        <p>No publications are listed in the current CV.</p>
+      </div>
+      <div class="card placeholder">
+        <h3>Publications</h3>
+        <p>Publications: <strong>Cần bổ sung.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="container">
+      <div class="section-head">
+        <h2>Awards &amp; Certificates</h2>
+        <p>Recognitions and certificates explicitly listed in the CV.</p>
+      </div>
+      <div class="award-grid">
+        <div class="card">
+          <div class="project-meta">2025–2026</div>
+          <h3>Certificate of Outstanding Performance</h3>
+          <p>So Media Club — Outstanding Performance for the 2025–2026 term.</p>
+        </div>
+        <div class="card">
+          <div class="project-meta">2025</div>
+          <h3>Outstanding Member of Q1/2025</h3>
+          <p>So Media Club.</p>
+        </div>
+        <div class="card">
+          <div class="project-meta">PTIT</div>
+          <h3>Second Prize</h3>
+          <p>PTIT Uniform Design Competition.</p>
+        </div>
+        <div class="card">
+          <div class="project-meta">Certificate / Course</div>
+          <h3>IELTS Foundation and IELTS Intensive Training Courses</h3>
+          <p>Further details such as score, completion date and certificate number: <strong>Cần bổ sung.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resources" style="background:var(--soft)">
+    <div class="container">
+      <div class="section-head">
+        <h2>Resources</h2>
+        <p>No resources are provided in the current CV.</p>
+      </div>
+      <div class="card placeholder">
+        <h3>Resources</h3>
+        <p>Learning materials, creative resources and professional work: <strong>Cần bổ sung.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <p>Open to connecting around digital journalism, digital content, PR, marketing communication, visual storytelling and related opportunities.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-list">
+          <div class="contact-item"><small>Email</small><strong><a href="mailto:nclaclona@gmail.com">nclaclona@gmail.com</a></strong></div>
+          <div class="contact-item"><small>Phone</small><strong><a href="tel:+84397011756">0397 011 756</a></strong></div>
+          <div class="contact-item"><small>Location</small><strong>Ha Dong, Hanoi, Vietnam</strong></div>
+          <div class="contact-item"><small>Portfolio</small><strong>Cần bổ sung đường dẫn Portfolio.</strong></div>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Thank you for your message.');">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+          <textarea name="message" placeholder="Your message" required></textarea>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Nguyễn Cảnh Lan Anh · Digital Journalism · PTIT
+  </div>
+</footer>
+
+<script>
+  function toggleMenu(){
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(link=>{
+    link.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
